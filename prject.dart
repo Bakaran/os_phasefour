@@ -51,3 +51,8 @@ class PROCESS {
   }
 }
 
+class FRAME {
+  String name = "";
+  int frameSize = 400;
+}
+
