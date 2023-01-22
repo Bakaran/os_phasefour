@@ -104,3 +104,29 @@ void requestVar(String varName) {
   print("Pysical: frame");
   print("${frameNumber} offset ${pVar.pageOffset}");
 }
+int main() {
+  PROCESS pr = PROCESS("B");
+  /*pr.addVAR("var1", 4);
+  pr.addVAR("var2", 8);
+  pr.addVAR("var3", 240);
+  pr.addVAR("var4", 148);
+  pr.addVAR("var5", 240);
+  pr.addVAR("var6", 280);
+  pr.addVAR("var7", 120);
+  addProcess(pr);
+  requestVar("var7");*/
+  /*
+  Logical: Page2
+  Off 280
+  Fault
+  */
+
+  pr.addVAR("var1", 4);
+  pr.addVAR("var2", 8);
+  pr.addVAR("var3", 240);
+  pr.addVAR("var4", 148);
+  pr.addVAR("var5", 300);
+  addProcess(pr);
+  requestVar("var2");
+  return 0;
+}
