@@ -69,3 +69,38 @@ void addProcess(PROCESS p) {
   }
 }
 
+void requestVar(String varName) {
+  PROCESS? p = null;
+  VAR? pVar = null;
+
+  for (var pr in processes) {
+    for (var Var in pr.vars) {
+      if (Var.name == varName) {
+        p = pr;
+        pVar = Var;
+      }
+    }
+  }
+  if (p == null || pVar == null) {
+    print("Not Found");
+    return;
+  }
+  print("Logical: Page ${pVar.page}");
+  print("Offset ${pVar.pageOffset}");
+  String? frameName = p.processName + "${pVar.page}";
+  int frameNumber = 0;
+  bool frameFound = false;
+  for (var frame in memory) {
+    if (frame.name == frameName) {
+      frameFound = true;
+      break;
+    }
+    frameNumber++;
+  }
+  if (!frameFound) {
+    print("Fault");
+    return;
+  }
+  print("Pysical: frame");
+  print("${frameNumber} offset ${pVar.pageOffset}");
+}
