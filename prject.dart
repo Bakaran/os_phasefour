@@ -56,3 +56,16 @@ class FRAME {
   int frameSize = 400;
 }
 
+void addProcess(PROCESS p) {
+  processes.add(p);
+  for (int i = 0; i <= (p.processSize / p.pageSize); i++) {
+    FRAME frame = FRAME();
+    frame.name = p.processName + "$i";
+    if (memory.length == memoryMaxSize) {
+      disk.add(frame);
+    } else {
+      memory.add(frame);
+    }
+  }
+}
+
