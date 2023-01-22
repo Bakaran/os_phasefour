@@ -11,3 +11,9 @@ class VAR {
   String name = "";
 }
 
+
+class PAGE {
+  int number = 0;
+  int size = 0;
+}
+
