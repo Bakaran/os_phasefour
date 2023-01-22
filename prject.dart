@@ -17,3 +17,37 @@ class PAGE {
   int size = 0;
 }
 
+class PROCESS {
+  int processSize = 0;
+  int pageSize = 400;
+  String processName = "";
+  List<VAR> vars = [];
+  List<PAGE> pageTable = [];
+
+  PROCESS(String processName) {
+    this.processName = processName;
+    this.pageTable.add(PAGE());
+  }
+
+  void addVAR(String varName, int size) {
+    VAR Var = VAR();
+    Var.name = varName;
+    Var.size = size;
+
+    PAGE last = pageTable.last;
+    if (last.size + Var.size > pageSize) {
+      PAGE tmp = PAGE();
+      tmp.number = last.number + 1;
+      tmp.size = 0;
+      pageTable.add(tmp);
+      last = pageTable.last;
+    }
+
+    Var.page = last.number;
+    Var.pageOffset = last.size;
+    last.size += Var.size;
+    vars.add(Var);
+    processSize += Var.size;
+  }
+}
+
